@@ -35,4 +35,4 @@ print("kas_käib_koolis {kas_käib_koolis} on: {type(kas_käib_koolis)}")
 # Eemalda soovitud kommide arv laual olevate kommide arvust ja kuva ekraanile, kui palju komme laual nüüd on.
 from random import *
 laua_peal=randint(10,50) #juhuslik arv 10-50
-print(f"Laual on {laua_peal} kommi") a
+print(f"Laual on {laua_peal} kommi") ää
