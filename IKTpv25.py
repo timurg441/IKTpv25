@@ -27,3 +27,12 @@ print("vanus {vanus} on: {type(vanus)}")
 print("eesnimi {eesnimi} on: {type(eesnimi)}")
 print("pikkus {pikkus} on: {type(pikkus)}")
 print("kas_käib_koolis {kas_käib_koolis} on: {type(kas_käib_koolis)}")
+
+# 3.
+# Kirjuta enda koodis laual olevate kommide arv muutujasse(kommide arv on juhuslik). 
+# Seejärel kuva muutujas olev kommide arv ekraanile kasutades print() käsku.
+# Küsi kasutajalt sisendit, mitu kommi ta soovib laualt ära võtta. 
+# Eemalda soovitud kommide arv laual olevate kommide arvust ja kuva ekraanile, kui palju komme laual nüüd on.
+from random import *
+laua_peal=randint(10,50) #juhuslik arv 10-50
+print(f"Laual on {laua_peal} kommi")
