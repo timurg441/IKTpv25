@@ -57,5 +57,3 @@ print(f"Puu läbimõõt on {läbimõõt:.2f} meetrit") #.2f tähendab 2 kohta p�
 
 # 5.
 # Arvutage Pythoni käsureal, kui pikk on ristkülikukujulise maatüki diagonaal, mille mõõtmed on Nm x Mm. N ja M küsi kasutajalt.
-
-s
