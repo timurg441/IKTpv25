@@ -1,56 +1,9 @@
-﻿# 1.
+﻿
+# 1.
 # Kirjuta enda esimene programm, mis väljastab käsureale teksti: “Tere, maailm!”. 
 # Küsi kasutaja nimi ja muuda tekst, et ta näeks välja nii: “Tere, maailm! Tervitan sind Mati”, kui kasutaja nimi on Mati.
 # Küsi kasutajalt sisend tema vanuse kohta ning väljasta see ekraanile:
 # “Tere, maailm! Tervitan sind Mati! Sa oled N aastat vana.”
-
-from PIL import Image
-import matplotlib.pyplot as plt
-
-# Открываем изображение из файла (например, 'photo.jpg' в той же папке, где этот скрипт)
-
-
-import time
-import tkinter as tk
-from PIL import Image, ImageTk
-import random
-
-def open_image_window(image_path, screen_width, screen_height):
-    window = tk.Toplevel()
-    window.title("Photo")
-
-    img = Image.open(image_path)
-    photo = ImageTk.PhotoImage(img)
-
-    label = tk.Label(window, image=photo)
-    label.image = photo
-    label.pack()
-
-    # Получаем размеры изображения
-    img_width, img_height = img.size
-
-    # Выбираем случайную позицию, чтобы окно целиком помещалось на экран
-    x = random.randint(0, max(0, screen_width - img_width))
-    y = random.randint(0, max(0, screen_height - img_height))
-
-    # Задаём позицию окна
-    window.geometry(f"{img_width}x{img_height}+{x}+{y}")
-
-root = tk.Tk()
-root.withdraw()
-
-image_path = "images.jpg"
-
-# Получаем размер экрана
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
-
-while True:
-    open_image_window(image_path, screen_width, screen_height)
-    root.update()
-    
-
-
 
 print("Tere maailm!")
 nimi=input("Sisesta oma nimi: ").capitalize()#sisend ja ootab enterit
@@ -104,6 +57,52 @@ läbimõõt=ümbermõõt/pi #võib kasutada ka math raamatukogu
 print(f"Puu läbimõõt on {läbimõõt:.2f} meetrit") #.2f tähendab 2 kohta pärast koma
 
 # 5.
-# Arvutage Pythoni käsureal, kui pikk on ristkülikukujulise maatüki diagonaal, mille mõõtmed on Nm x Mm. N ja sdf küsi kasutajalt.
+# Arvutage Pythoni käsureal, kui pikk on ristkülikukujulise maatüki diagonaal, mille mõõtmed on Nm x Mm. N ja M küsi kasutajalt.
+from math import *
 
-# ТВОЙ ГИТХАБ БЫЛ ВЗЛОМАН, ОН ПЕРЕХОДИТ ПОД ВЛАДЕНИЕ ДЖОРДЖА ДРОИДА
+N = float(input("Sisesta ristküliku pikkus (N): "))
+M = float(input("Sisesta ristküliku laius (M): "))
+
+diagonaal = math.sqrt(N**2 + M**2)
+print("Ristküliku diagonaal on:", diagonaal)
+
+# 6.
+# Leidke järgnevast näiteprogrammist loogiline viga:
+aeg = float(input("Mitu tundi kulus sõiduks? "))
+teepikkus = float(input("Mitu kilomeetrit sõitsid? "))
+kiirus = aeg / teepikkus
+print("Sinu kiirus oli " + str(kiirus) + " km/h")
+
+# 7.
+# Koostada programm, mis arvutab aritmeetilise keskmise suvalisest etteantud 5 täis arvust.
+# Leia nende arvude summa, jagatuna kasutaja poolt sisestatud arvuga, täisarvuline osa ja jääk.
+
+# 8. 
+# Joonista samasugune konn
+#    @..@
+#   (----)
+#  ( \__/ )
+#  ^^ "" ^^  
+print("   @..@")
+print("   (----)")
+print("  ( \\__/ )")
+print('^^ "" ^^')
+
+
+# 9.
+# Arvutame kolmnurga ümbermõõdu. Loo kolm täisarvulist muutujat a, b, c. Kasuta valem, mis arvutab kolmnurga ümbermõõdu (P=a+b+c)
+a = int(input("Sisesta külg a: "))
+b = int(input("Sisesta külg b: "))
+c = int(input("Sisesta külg c: "))
+
+P = a + b + c
+print("Kolmnurga ümbermõõt on:", P)
+
+# 10.
+# Pitsa
+# Võtsite sõpradega (näiteks P inimest) suure pitsa, mille hind on 12,90 €.
+# Jätate teenindajale 10% jootraha.
+# Koosta programm, mis arvutab, kui palju igaüks peab maksma.
+
+hind = 12.90
+inimesed = int(input("Mitu inimest jagab pitsa? "))

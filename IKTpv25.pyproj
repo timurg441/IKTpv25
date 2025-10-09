@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>30fd8762-bc50-495d-8b48-f362948963c1</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>IKTpv25.py</StartupFile>
+    <StartupFile>module1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,10 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IKTpv25.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="images.jpg" />
-    <Content Include="images.steamusercontent.jpg" />
+    <Compile Include="module1.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
