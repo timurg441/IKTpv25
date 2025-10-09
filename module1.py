@@ -26,4 +26,4 @@ print("Ringi läbimõõt",d)
 S = pi * r * 2
 print("Ringi pindala", round(S,1))
 C= 2*pi * r
-print("Ringjoone pikkus", round(C,2)) 
+print("Ringjoone pikkus", round(C,2))  
