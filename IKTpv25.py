@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-﻿
-=======
->>>>>>> 36f9933d0920a0aff8c222f891cd7d325d54067d
+
 # 1.
 # Kirjuta enda esimene programm, mis väljastab käsureale teksti: “Tere, maailm!”. 
 # Küsi kasutaja nimi ja muuda tekst, et ta näeks välja nii: “Tere, maailm! Tervitan sind Mati”, kui kasutaja nimi on Mati.
@@ -61,11 +58,8 @@ print(f"Puu läbimõõt on {läbimõõt:.2f} meetrit") #.2f tähendab 2 kohta p�
 
 # 5.
 # Arvutage Pythoni käsureal, kui pikk on ristkülikukujulise maatüki diagonaal, mille mõõtmed on Nm x Mm. N ja M küsi kasutajalt.
-<<<<<<< HEAD
 from math import *
-=======
 import math
->>>>>>> 36f9933d0920a0aff8c222f891cd7d325d54067d
 
 N = float(input("Sisesta ristküliku pikkus (N): "))
 M = float(input("Sisesta ristküliku laius (M): "))
