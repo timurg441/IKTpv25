@@ -31,9 +31,6 @@
 #✅ Programm peab kontrollima kasutaja sisestusi ja vältima vigaseid andmeid.
 #✅ Veatöötluseks kasuta try-except plokki, et vältida vigade tekkimist valede sisendite puhul.
 
-# Töö 2.3 Praktiline töö "Kehamassiindeksi (KMI) kalkulaator"
-# Ülesanne: Kehamassiindeksi (KMI) kalkulaator
-
 print("Tere! Olen sinu uus sõber - Python!")
 nimi = input("Sisesta oma nimi: ")
 print(f"{nimi}, oi kui ilus nimi!")
