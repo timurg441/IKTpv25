@@ -7,37 +7,51 @@
 #  / /
 #  __
 while True:
-   try:
-       n = int(input("Sisesta arv 1–9: "))
-       if 1 <= n <= 9:
-           for i in range(n):
-               print("  ^  ")
-               print(" / / ")
-               print(" \\ \\ ")
-               print("  / / ")
-               print("  __  ")
-               if i < n - 1:
-                   print()
-           break
-       else:
-           print("Palun sisesta arv vahemikus 1–9")
-   except:
-       print("See ei ole korrektne arv. Proovi uuesti")
+    try:
+        n = int(input("Sisesta arv 1–9: "))
+        if 1 <= n <= 9:
+            break
+        else:
+            print("Palun sisesta arv vahemikus 1–9")
+    except:
+        print("See ei ole korrektne arv. Proovi uuesti")
+
+for i in range(n):
+    print("  ^  ")
+    print(" / / ")
+    print(" \\ \\ ")
+    print("  / / ")
+    print("  __  ")
+    if i < n - 1:
+        print()
 
 
 # 2️. T sõpra tulid restorani. Sissepääsu juures on robotvalvur, kes laseb sisse ainult üle 16-aastased.
 # Selgita, mitu sõpra pääseb õhtusöögile.
-sopru = int(input("Mitu sõpra tuli?"))
+sopru = input("Mitu sõpra tuli? ")
+
+while not sopru.isdigit():
+    sopru = input("Palun sisesta ainult number: ")
+
+sopru = int(sopru)
 passeb = 0
 i = 0
 
 while i < sopru:
-    vanus = int(input(f"Sõbra {i+1} vanus: "))
+    vanus = input(f"Sõbra {i+1} vanus: ")
+    
+    while not vanus.isdigit():
+        vanus = input("Palun sisesta vanus numbrina: ")
+    
+    vanus = int(vanus)
+    
     if vanus > 16:
         passeb = passeb + 1
+    
     i = i + 1
 
 print(f"Restorani pääseb {passeb} sõpra")
+
 
 # 3️. Loenda eraldi tüdrukute ja poiste arv, et paigutada sportlased hotellitubadesse.
 # Võistlusele saabus X-liikmeline võistkond.
@@ -50,14 +64,14 @@ tudrukute_arv = voistkonna_suurus - poiste_arv
 inimesi_toas = int(input("Mitu inimest ühes toas?"))
 
 tuba_poistele = (poiste_arv + inimesi_toas - 1) // inimesi_toas
-tuba_tudrukutele = (tydrukute_arv + inimesi_toas - 1) // inimesi_toas
+tuba_tudrukutele = (tudrukute_arv + inimesi_toas - 1) // inimesi_toas
 kokku_tube = tuba_poistele + tuba_tudrukutele
 
 print(f"Poisse: {poiste_arv}")
 print(f"Tüdrukuid: {tudrukute_arv}")
 print(f"Tubasi broneerida: {kokku_tube}")
-print(f"  - {tuba_poistele} tuba poistele")
-print(f"  - {tuba_tudrukutele} tuba tüdrukutele")
+print(f"{tuba_poistele} tuba poistele")
+print(f"{tuba_tudrukutele} tuba tüdrukutele")
 
 # 4️. Küsitle O kasutajat, selgita välja nende kaal, pikkus ja vanus.
 # Arvuta kehamassiindeks (BMI) ja teavita kasutajat tema tulemuse tähendusest.
@@ -69,34 +83,36 @@ bmi = kaal / (pikkus * pikkus)
 
 if bmi < 18.5:
     print("Alakaaluline")
+elif bmi < 25:
+    print("Normaalkaal")
+elif bmi < 30:
+    print("Ülekaaluline")
 else:
-    if bmi < 25:
-        print("Normaalkaal")
-    else:
-        if bmi < 30:
-            print("Ülekaaluline")
-        else:
-            print("Rasvumine")
+    print("Rasvumine")
+
 
 # 5️. Kontrolli N inimese isikukoodi (11 sümbolit).
 # Määra isiku sugu.
 # Kuva, mitu meest ja mitu naist sisestatud N inimese seas on.
-n = int(input("Mitu isikukoodi kontrollida?"))
 mehi = 0
 naisi = 0
-i = 0
 
-while i < n:
-    kood = input()
-    
-    if len(kood) == 11:
-        esimene = int(kood[0])
-        
-        if esimene % 2 == 0:
-            naisi = naisi + 1
+N = int(input("Mitu isikukoodi sisestad? "))
+
+for i in range(N):
+    kood = input("Sisesta isikukood: ")
+
+    if len(kood) != 11:
+        print("Vigane isikukood!")
+    else:
+        if kood[0] == '1' or kood[0] == '3' or kood[0] == '5':
+            print("Mees")
+            mehi += 1
+        elif kood[0] == '2' or kood[0] == '4' or kood[0] == '6':
+            print("Naine")
+            naisi += 1
         else:
-            mehi = mehi + 1
-    i = i + 1
+            print("Vigane esimene number!")
 
-print(mehi)
-print(naisi)
+print("Mehi kokku:", mehi)
+print("Naisi kokku:", naisi)
