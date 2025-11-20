@@ -1,18 +1,3 @@
-import msvcrt
-#Sisestamise ajal asendatakse kõik tähed '@'-ga
-täht=""
-while True:
-    t=msvcrt.getwch()
-    print(t.replace(t, "@"), end="", flush=True)
-    täht+=t
-    if t=='\r':  #Enter
-        break
-    print()  
-    print(täht)
-
-
-
-
 #List-loend
 #Loome listi
 l=[] #tühi list
