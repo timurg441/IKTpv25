@@ -26,7 +26,7 @@ print(f"Sõnas või lauses on {täishäälikud} täishäälikut, {kaashäälikud
 #Salvesta nimed loendisse ja kuva need tähestikulises järjekorras.
 # Kuva viimane lisatud nimi.
 # Lisa võimalus nimekirjas olevaid nimesid muuta
-'''nimed = []
+nimed = []
 for i in range(5):
     nimi = input(f"Sisesta {i+1}. nimi: ")
     nimed.append(nimi)
@@ -61,12 +61,12 @@ while True:
         break
     
     else:
-        print("Palun sisesta 'jah' või 'ei'")'''
+        print("Palun sisesta 'jah' või 'ei'")
 
 # 2.2 Kordustega nimed
 # Antud on loend kordustega.
 # Koosta programm, mis väljastab nimed ilma kordusteta.
-'''nimed = ["Mari", "Jüri", "Anna", "Mari", "Peeter", "Kati", "Jüri", "Anna", "Mari"]
+nimed = ["Mari", "Jüri", "Anna", "Mari", "Peeter", "Kati", "Jüri", "Anna", "Mari"]
 
 unikaalsed_nimed = list(set(nimed))
 
@@ -75,7 +75,7 @@ print("Nimed ilma kordusteta:", sorted(unikaalsed_nimed))
 print("Korduste arv:")
 for nimi in sorted(unikaalsed_nimed):
     kordusi = nimed.count(nimi)
-    print(f"{nimi}: {kordusi} korda")'''
+    print(f"{nimi}: {kordusi} korda")
 
 # 2.3 Vanused
 # Koosta vanuste loend ja leia:
@@ -84,7 +84,7 @@ for nimi in sorted(unikaalsed_nimed):
 # kogusumma
 # keskmine
 # Vanuste loend
-'''vanused = [25, 18, 42, 33, 21, 67, 19, 29, 55, 38]
+vanused = [25, 18, 42, 33, 21, 67, 19, 29, 55, 38]
 
 suurim = max(vanused)
 väikseim = min(vanused)
@@ -95,7 +95,7 @@ print("Vanuste loend:", vanused)
 print(f"Suurim vanus: {suurim}")
 print(f"Väikseim vanus: {väikseim}")
 print(f"Vanuste kogusumma: {kogusumma}")
-print(f"Keskmine vanus: {keskmine:.2f}"'''
+print(f"Keskmine vanus: {keskmine:.2f}
 
 # 3️ Tärnide lintdiagramm
 # Kasuta loendis olevaid arve ja joonista tärnidega diagramm.
