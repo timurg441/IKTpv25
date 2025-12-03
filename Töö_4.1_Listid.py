@@ -191,3 +191,131 @@ kogus=len(loend_arvud) # loendi pikkus
 suurim_muudatud=suurim/mitu 
 loend_arvud[kus_asub]=round(suurim_muudatud,2) # muudame suurima väärtuse ja ümardame 2 kohta pärast koma
 print(f"Muutmise järel: {loend_arvud}")
+
+#7 Sorteerimine 
+# Sorteeri nimekiri numbreid absoluutväärtuse järgi
+# kasvavalt
+# või kahanevalt
+loend = [15, -8, 23, -45, 12, 67, -34, 89, -5, 28]
+
+print("Algne loend:", loend)
+
+valik = input("Kas soovid sorteerida kasvavalt (k) või kahanevalt (v)? ")
+
+if valik == "k":
+    uus_loend = sorted(loend, key=abs)
+    print("Kasvavalt:", uus_loend)
+elif valik == "v":
+    uus_loend = sorted(loend, key=abs, reverse=True)
+    print("Kahanevalt:", uus_loend)
+else:
+    print("Vale valik! Sisesta 'k' või 'v'")
+
+# 8️⃣ Võrdse pikkusega sõned 🧱
+
+loend1 = ['tamm', 'taevas', 'elevant']
+print("Algne 1:", loend1)
+
+pikim1 = max(len(s) for s in loend1)
+
+uus1 = []
+for s in loend1:
+    uus1.append(s + '_' * (pikim1 - len(s)))
+
+print("Tulemus 1:", uus1)
+print()
+
+loend2 = ['a', 'aa', 'aaa', 'aaaa', 'aaaaa']
+print("Algne 2:", loend2)
+
+pikim2 = max(len(s) for s in loend2)
+uus2 = []
+for s in loend2:
+    uus2.append(s + '_' * (pikim2 - len(s)))
+
+print("Tulemus 2:", uus2)
+print()
+
+# Kolmas loend
+loend3 = ['qweasdqweas', 'q', 'rteww', 'ewqqqqq']
+print("Algne 3:", loend3)
+
+pikim3 = max(len(s) for s in loend3)
+uus3 = []
+for s in loend3:
+    uus3.append(s + '_' * (pikim3 - len(s)))
+
+print("Tulemus 3:", uus3)
+
+# 9 Nime kontroll
+
+n = input("Nimi: ")
+
+if n.isalpha():
+    print("Nimi OK")
+    print("Tere, " + n.capitalize() + "!")
+    print("Tähti:", len(n))
+    
+    t = "aeiouõäöü"
+    taishaalikuid = sum(1 for c in n.lower() if c in t)
+    print("Täishäälikuid:", taishaalikuid)
+    print("Kaashäälikuid:", len(n) - taishaalikuid)
+    
+    tahed = sorted(set(n.lower()))
+    print("Tähed a-z:", ''.join(tahed))
+    
+else:
+    print("Vigane nimi!")
+
+# 10 Töötajate andmed
+
+t = [("Mari",25,1800), ("Jüri",32,2200), ("Anna",28,1950), 
+     ("Peeter",45,3500), ("Kati",22,1700), ("Tanel",38,2800),
+     ("Liisa",29,2000), ("Mart",41,3200)]
+
+suurim = max(t, key=lambda x: x[2])
+print("Suurim palk:", suurim[0], suurim[2], "€")
+
+kesk_palk = sum(p[2] for p in t) / len(t)
+print("Keskmine palk:", round(kesk_palk, 1), "€")
+
+yle = sum(1 for p in t if p[2] > kesk_palk)
+print("Üle keskmise:", yle)
+
+kesk_vanus = sum(p[1] for p in t) / len(t)
+
+noored = [p[1] for p in t if p[1] <= kesk_vanus]
+kesk_noored = sum(noored) / len(noored)
+
+# Grupp 2: vanemad
+vanemad = [p[1] for p in t if p[1] > kesk_vanus]
+kesk_vanemad = sum(vanemad) / len(vanemad)
+
+print("Keskmine vanus:", round(kesk_vanus, 1))
+print("Vanus ≤ keskmine:", len(noored), "inimest, keskmine", round(kesk_noored, 1))
+print("Vanus > keskmine:", len(vanemad), "inimest, keskmine", round(kesk_vanemad, 1))
+
+# 11 Inglise tähestik
+import string
+tahed = list(string.ascii_lowercase)
+print("Tähed:", tahed)
+
+uus = []
+for i in range(26):
+    uus.append(chr(97 + i) * (i + 1))
+    
+print("Korrutised:", uus[:10])
+print("... ja nii edasi")
+
+# 1️2 Min ja max vahetamine 
+import random
+
+arvud = [random.randint(1, 100) for _ in range(10)]
+print("Algne:", arvud)
+
+mini = arvud.index(min(arvud))
+maxi = arvud.index(max(arvud))
+
+arvud[mini], arvud[maxi] = arvud[maxi], arvud[mini]
+
+print("Pärast:", arvud)
