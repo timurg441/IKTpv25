@@ -32,4 +32,4 @@ for i in range(5):
     
     t=input("Sisesta tehe (+,-,*,/): ")
     tulemus=arithmetic(arv1, arv2, t)
-    print(f"{arv1} {t} {arv2} = {tulemus}")
+    print(f"{arv1} {t} {arv2} = {tulemus}") 
