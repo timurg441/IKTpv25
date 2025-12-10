@@ -1,35 +1,43 @@
-from Mooduli_fail import *
-#square() funktsiooni kasutamine
-print("Arvutame ruudu pindala ja ümbermõõdu!")
-#Kui tahad mitu korda arvutada, siis pane tsükkel
-külg=float_kontroll(input("Sisesta ruudu külje pikkus: "))
-ümbermõõt, pindala, diagonaal=square(külg)
-print(f"Ruudu külg: {külg}")
-print(f"Ruudu ümbermõõt: {ümbermõõt}")
-print(f"Ruudu pindala: {pindala}")
-print(f"Ruudu diagonaal: {diagonaal}")
+ï»¿#1
+from modulifail import*
 
 
+print("Lahendame/testime 5 arvutehet")
+for i in range(5):
+    arv1 = float_kontroll(input("sisesta esimene arv: "))
+    arv2 = float_kontroll(input("sisesta teine arv: "))
+    t = input("sisesta tehe(+,-,*,/):")
+
+    tulemus = arithmetic(arv1, arv2, t)
+    print(arv1, arv2, t)
+    print(f"{arv1} {t} {arv2} = {tulemus}")
 
 
-#is_year_leap() funktstiooni kasutamine
+#2
+
 for i in range(3):
     aasta=int_kontroll(input("Sisesta aasta: "))
     if is_year_leap(aasta):
-        print(f"{aasta} on liigasta")
+        print(f"{aasta} on liigaasta")
     else:
         print(f"{aasta} on tavaline aasta")
 
 
+#3
 
+kÃ¼lje_pikkus=float_kontroll(input("Sisesta ruudu kÃ¼lje pikkus: "))
+pindala, Ã¼mbermÃµÃµt, diagonaal=square(kÃ¼lje_pikkus)
+print(f"Ruudu pindala on {pindala}, Ã¼mbermÃµÃµt on {Ã¼mbermÃµÃµt}, diagonaal on {diagonaal}")
 
-#arithmetic() funktsiooni kasutamine
-print("Lahendame/testime 5 arvutehet!")
-for i in range(5):
+#4
 
-    arv1=float_kontroll(input("Sisesta esimene arv: "))
-    arv2=float_kontroll(input("Sisesta teine arv:"))
-    
-    t=input("Sisesta tehe (+,-,*,/): ")
-    tulemus=arithmetic(arv1, arv2, t)
-    print(f"{arv1} {t} {arv2} = {tulemus}") 
+kuu=int_kontroll(input("Sisesta kuu number (1-12): "))
+kuu=season(kuu)
+print(f"on aastaaja {kuu}")
+
+#5
+
+arv = int_kontroll(input("Sisesta positiivne tÃ¤isarv: "))
+aasta = int_kontroll(input("Sisesta aasta: "))
+arv1 = pangahoius(arv)
+print(f"Sisestasid arvu pÃ¤rast kontrolli: {arv1}")
