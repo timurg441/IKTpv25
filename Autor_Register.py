@@ -1,4 +1,4 @@
-from Mooduli_fail import *
+from MinuOmaMoodul import *
 k=['Mari', 'Juku', 'Kati']
 s=['1234', '5678', 'abcd']
 
