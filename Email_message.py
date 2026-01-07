@@ -23,10 +23,10 @@ def saada_email(saaja_email):
     <title>HTML email</title>
 </head>
 <body>
-    <h1>Sending an HTML email from Python</h1>
-    <p>Hello there,</p>
+    <h1>HTML-e-kirja saatmine Pythonist</h1>
+    <p>Tere,</p>
     <a href="https://github.com/timurg441/IKTpv25">
-        Here's a link to my GitHub!
+        See on minu GitHub!
     </a>
 </body>
 </html>
