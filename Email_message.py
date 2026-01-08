@@ -2,7 +2,7 @@ import smtplib, ssl
 from email.message import EmailMessage
 
 def saada_email(saaja_email):
-    teema = "Test kiri Pythonist"
+    kiri = "Test kiri Pythonist"
     saatja_email = "1ame.xyz07@gmail.com"
     parool = input("Sisesta rakenduse parool: ")
 
@@ -11,9 +11,13 @@ def saada_email(saaja_email):
     context = ssl.create_default_context()
 
     msg = EmailMessage()
-    msg["Subject"] = teema
-    msg["From"] = saatja_email
-    msg["To"] = saaja_email
+    msg.set_content(kiri,subtype='html')
+    msg["Subject"]=kiri
+    msg["From"]=saatja_email
+    msg["To"]=saaja_email
+    with open("image.png", "rb") as f:
+        image_data = f.read()
+    msg.add_attachment(image_data, maintype="image", subtype="png")
 
     html_content = """\
 <!DOCTYPE html>
@@ -34,11 +38,11 @@ def saada_email(saaja_email):
 
     msg.set_content(html_content, subtype="html")
 
-    try:
-        with smtplib.SMTP(smtp_server, port) as server:
+    try: 
+        with smtplib.SMTP(smtp_server,port) as server:
             server.starttls(context=context)
-            server.login(saatja_email, parool)
-            server.send_message(msg)
+            server.login(saatja_email,parool)
+            server.send_message(msg) #kui ei kasuta with siis on vaja sulgeda server.quit()
         print("E-kiri saadetud!")
     except Exception as e:
         print(f"Midagi läks valesti... {e}")
