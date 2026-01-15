@@ -1,104 +1,139 @@
-import glob
 import os
+import glob
+import datetime
 
 def leia_projektifailid():
-    laiend = input("Sisesta faililaiend (nt: txt, py, java): ")
+    laiend = input("Sisesta faililaiend (näiteks: txt, py): ")
     
-    if not laiend.startswith("."):
-        laiend = "." + laiend
+    if not laiend.startswith('.'):
+        laiend = '.' + laiend
     
-    kõik_failid = os.listdir(".")
-    leitud_failid = []
+    failid = glob.glob(f'*{laiend}')
     
-    for fail in kõik_failid:
-        if os.path.isfile(fail) and fail.endswith(laiend):
-            leitud_failid.append(fail)
-    
-    if leitud_failid:
-        print(f"Leitud {len(leitud_failid)} fail(i) laiendiga {laiend}:")
-        for f in leitud_failid:
-            print(f"  - {f}")
+    if failid:
+        print(f"Leitud {len(failid)} fail(i):")
+        for fail in failid:
+            print(f"  - {fail}")
     else:
-        print(f"Ei leitud faile laiendiga {laiend}")
+        print(f"Ei leitud ühtegi faili laiendiga {laiend}")
     
-    return leitud_failid
+    return failid
 
 def analyysi_faili_sisu():
-    failinimi = input("Sisesta faili nimi: ")
-    
-    if not os.path.exists(failinimi):
-        print("Sellist faili ei leitud!")
-        return "Faili ei leitud"
-    
-    try:
-        with open(failinimi, 'r', encoding='utf-8') as f:
-            read = f.readlines()
+    while True:
+        faili_tee = input("Sisesta faili nimi või tee: ")
         
-        ridu_kokku = len(read)
-        tyhjad_read = 0
-        todo_count = 0
-        fixme_count = 0
+        if not os.path.isfile(faili_tee):
+            print("Sellist faili pole olemas! Proovi uuesti.")
+            continue
         
-        for rida in read:
-            puhas_rida = rida.strip()
+        try:
+            with open(faili_tee, 'r', encoding='utf-8') as f:
+                sisu = f.read()
             
-            if puhas_rida == "":
-                tyhjad_read += 1
+            read = sisu.split('\n')
+            ridu_kokku = len(read)
             
-            if "TODO" in rida.upper():
-                todo_count += 1
-            if "FIXME" in rida.upper():
-                fixme_count += 1
-        
-        print(f"\nFaili {failinimi} analüüs:")
-        print(f"  Ridu kokku: {ridu_kokku}")
-        print(f"  Tühjad read: {tyhjad_read}")
-        print(f"  TODO sõnu: {todo_count}")
-        print(f"  FIXME sõnu: {fixme_count}")
-        
-        return {
-            "fail": failinimi,
-            "ridu": ridu_kokku,
-            "tyhjad": tyhjad_read,
-            "TODO": todo_count,
-            "FIXME": fixme_count
-        }
-        
-    except:
-        print("Viga faili lugemisel!")
-        return "Viga faili lugemisel"
+            tyhjad_read = sum(1 for rida in read if rida.strip() == '')
+            
+            todo_count = sisu.upper().count('TODO')
+            fixme_count = sisu.upper().count('FIXME')
+            
+            print("\nANALÜÜSI TULEMUSED:")
+            print(f"Fail: {faili_tee}")
+            print(f"Ridu kokku: {ridu_kokku}")
+            print(f"Tühjad read: {tyhjad_read}")
+            print(f"TODO märksõnu: {todo_count}")
+            print(f"FIXME märksõnu: {fixme_count}")
+            
+            tulem = {
+                'fail': faili_tee,
+                'ridu': ridu_kokku,
+                'tyhjad': tyhjad_read,
+                'TODO': todo_count,
+                'FIXME': fixme_count
+            }
+            return tulem
+            
+        except Exception as e:
+            print(f"Tekkis viga: {e}")
+            return None
 
 def loo_raporti_kataloog():
     kataloogi_nimi = "Analüüsi_Raportid"
     
     if os.path.exists(kataloogi_nimi):
-        print(f"Kataloog '{kataloogi_nimi}' on juba olemas!")
-        return f"Kataloog {kataloogi_nimi} juba eksisteerib"
+        print(f"Kataloog '{kataloogi_nimi}' on juba olemas.")
+        valik = input("Kas soovid seda kasutada? (jah/ei): ").lower()
+        if valik == 'jah':
+            return f"Kasutatakse olemasolevat kataloogi: {kataloogi_nimi}"
     
-    os.mkdir(kataloogi_nimi)
-    print(f"Loodud kataloog: {kataloogi_nimi}")
-    
-    return f"Loodud kataloog: {kataloogi_nimi}"
+    try:
+        os.mkdir(kataloogi_nimi)
+        print(f"Loodud uus kataloog: {kataloogi_nimi}")
+        return f"Loodud kataloog: {kataloogi_nimi}"
+    except Exception as e:
+        print(f"Ei saanud kataloogi luua: {e}")
+        return f"Viga: {e}"
 
 def leia_failid_algustahega():
-    taht = input("Sisesta täht: ")
+    while True:
+        taht = input("Sisesta täht, millega failinimi algab: ").strip()
+        
+        if len(taht) == 1 and taht.isalpha():
+            break
+        print("Palun sisesta täpselt üks täht!")
     
-    if len(taht) != 1 or not taht.isalpha():
-        print("Palun sisesta üks täht!")
-        return "Vigane sisend"
-    
-    kõik_failid = os.listdir(".")
-    leitud_failid = []
+    failid = []
+    kõik_failid = os.listdir('.')
     
     for fail in kõik_failid:
         if os.path.isfile(fail) and fail.startswith(taht):
-            leitud_failid.append(fail)
+            failid.append(fail)
     
-    if leitud_failid:
-        print(f"Leitud {len(leitud_failid)} fail(i) tähega '{taht}':")
-        for f in leitud_failid:
-            print(f"  - {f}")
+    if not failid:
+        for fail in kõik_failid:
+            if os.path.isfile(fail) and fail.startswith(taht.upper()):
+                failid.append(fail)
+    
+    if failid:
+        print(f"Leitud {len(failid)} fail(i) tähega '{taht}':")
+        for fail in failid:
+            print(f"  - {fail}")
     else:
-        print(f"Ei leitud faile tähega '{taht}'")
+        print(f"Ei leitud ühtegi faili tähega '{taht}'")
     
-    return leitud_failid
+    return failid
+
+def loo_raporti_fail():
+    faili_nimi = input("Sisesta uue raportifaili nimi: ").strip()
+    
+    if not faili_nimi:
+        print("Faili nimi ei saa olla tühi!")
+        return "Viga: faili nimi puudub"
+    
+    if not faili_nimi.endswith('.txt'):
+        faili_nimi += '.txt'
+    
+    try:
+        with open(faili_nimi, 'w', encoding='utf-8') as f:
+            f.write("=" * 40 + "\n")
+            f.write("PROJEKTI ANALÜÜSI RAPORT\n")
+            f.write("=" * 40 + "\n\n")
+            f.write("Raport loodud: " + datetime.datetime.now().strftime("%d.%m.%Y %H:%M") + "\n")
+            f.write("Automaatne analüüs\n\n")
+        
+        print(f"Raportifail '{faili_nimi}' on loodud!")
+        
+        vastus = input("Kas soovid faili midagi lisada? (jah/ei): ").lower()
+        if vastus == 'jah':
+            tekst = input("Kirjuta tekst, mida soovid lisada:\n")
+            with open(faili_nimi, 'a', encoding='utf-8') as f:
+                f.write(tekst + "\n")
+            print("Tekst on lisatud!")
+        
+        return f"Loodud fail: {faili_nimi}"
+        
+    except Exception as e:
+        print(f"Ei saanud faili luua: {e}")
+        return f"Viga: {e}"
